@@ -1,9 +1,12 @@
 package com.generation.projeto_final_bloco_02.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -23,6 +26,9 @@ public class Categoria {
 	@NotBlank(message = "O atributo descrição é Obrigatório!") 
 	@Size(min = 5, max = 100, message = "O atributo título deve conter no mínimo 05 e no máximo 100 caracteres")
 	private String descricao;
+	
+	@OneToMany(mappedBy = "categoria")
+	private List<Produto> produtos;
 
 	public Long getId() {
 		return id;
